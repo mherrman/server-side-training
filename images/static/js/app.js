@@ -27,4 +27,39 @@ function getCorgi() {
     var randomNumber = Math.floor((Math.random() * corgis.length));
     var chosenCorgi = corgis[randomNumber];
     document.getElementById("corgi_image").src = chosenCorgi;
+    mixpanel.track('Corgi Loaded', {'Image': chosenCorgi})
 }
+
+function pageView() {
+    mixpanel.track('Page View', {'Page Name': window.location.href});
+}
+
+
+function reset() {
+    mixpanel.reset()
+}
+
+//run when the document finished loading
+$( document ).ready(function() {
+    //runs when the object labeled id=submit_button is clicked
+    $('#submit_button').click(function() {
+        //get the mixpanel distinct_id and set it to the value of the object with id=id_distinct_id
+        var d_id = mixpanel.get_distinct_id();
+        document.getElementById("id_distinct_id").value = d_id;
+        //if id_distinct_id value is not "" then print value and submit the form
+        if($('#id_distinct_id').val != "")
+        {
+            jQuery('form').submit();
+        }
+    })
+    if (document.getElementById("distinct-id")) {
+        var distinctId = document.getElementById("distinct-id").value;
+        if (distinctId) {
+            mixpanel.identify(distinctId);
+        }
+    }
+});
+
+
+
+

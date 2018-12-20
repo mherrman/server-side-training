@@ -6,7 +6,7 @@ the SignUpForm in order to start collecting the distinct_id.
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
-
+from django import forms
 
 class SignUpForm(UserCreationForm):
 

@@ -5,6 +5,7 @@
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button class="btn btn-success" type="submit">Sign up</button>
+	   	<input type="hidden" id="id_distinct_id" name="distinct_id" />
+        <button class="btn btn-success" id="submit_button" type="submit">Sign up</button>
     </form>
 {% endblock %}
